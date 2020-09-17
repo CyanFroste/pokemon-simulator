@@ -1,0 +1,11 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./index.js",
+  "scripts": {
+    "ts:watch": "tsc -w"
+  },
+  "author": "",
+  "license": "ISC"
+}
