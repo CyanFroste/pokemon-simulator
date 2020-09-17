@@ -3,9 +3,9 @@ const { HP, ATK, DEF, SP_ATK, SP_DEF, SPD } = STAT;
 
 export class Nature {
 	constructor(
-		private name: string,
-		private incStat: string | null,
-		private decStat: string | null
+		readonly name: string,
+		readonly incStat: string | null,
+		readonly decStat: string | null
 	) {}
 	getModifier(stat: string) {
 		if (stat === null) return 1;

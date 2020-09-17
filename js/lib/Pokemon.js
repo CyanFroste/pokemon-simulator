@@ -2,12 +2,12 @@ import { STAT } from "./Globals.js";
 export class Pokemon {
     constructor(
     // private gender: string,
-    name, types, nature, _moves, baseStats, IVs, EVs // private ability: object
+    name, types, nature, moves, baseStats, IVs, EVs // private ability: object
     ) {
         this.name = name;
         this.types = types;
         this.nature = nature;
-        this._moves = _moves;
+        this.moves = moves;
         this.baseStats = baseStats;
         this.IVs = IVs;
         this.EVs = EVs;
@@ -20,22 +20,39 @@ export class Pokemon {
             spDef: 0,
             speed: 0,
         };
-        this.battleStats = [];
         this.status = [];
-        this.details = {
-            name: this.name,
-            nature: this.nature.getName(),
-            types: this.types,
-            level: this.level,
-            stats: this.stats,
-            baseStats: this.baseStats,
-            IVs: this.IVs,
-            EVs: this.EVs,
+        this.battleStats = {
+            // Ingeniously shit method to deep copy object
+            fainted: false,
+            stats: JSON.parse(JSON.stringify(this.stats)),
+            moves: JSON.parse(JSON.stringify(this.moves)),
         };
         this.levelUp(1);
     }
+    setBattleStats(stats, moves, fainted) {
+        if (stats)
+            this.battleStats.stats = stats;
+        if (fainted)
+            this.battleStats.fainted = fainted;
+        if (moves)
+            this.battleStats.moves = moves;
+    }
+    details() {
+        return {
+            name: this.name,
+            nature: this.nature.name,
+            types: this.types,
+            moves: this.moves,
+            level: this.level,
+            stats: this.stats,
+            baseStats: this.baseStats,
+            battleStats: this.battleStats,
+            IVs: this.IVs,
+            EVs: this.EVs,
+        };
+    }
     use(move, target) {
-        let chosenMove = this._moves.find((_move) => _move.name === move);
+        let chosenMove = this.moves.find((_move) => _move.name === move);
         // if the pokemon don't have that move
         if (!chosenMove)
             return;
@@ -64,5 +81,6 @@ export class Pokemon {
             }
         }
         // end calculation of stats
+        this.battleStats.stats = JSON.parse(JSON.stringify(this.stats));
     }
 }
