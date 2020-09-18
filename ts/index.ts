@@ -161,6 +161,12 @@ class ProgressBar {
 		".type"
 	)!.innerHTML = pokemonOne.details().moves[0].type.toUpperCase();
 	POMoveOne.querySelector(
+		".power"
+	)!.innerHTML = pokemonOne.details().moves[0].power!.toString();
+	POMoveOne.querySelector(
+		".accuracy"
+	)!.innerHTML = pokemonOne.details().moves[0].accuracy + '%';
+	POMoveOne.querySelector(
 		".PP .current-PP"
 	)!.innerHTML = pokemonOne.details().battleStats.moves[0].PP.toString();
 	POMoveOne.querySelector(
@@ -186,6 +192,12 @@ class ProgressBar {
 	POMoveTwo.querySelector(
 		".type"
 	)!.innerHTML = pokemonOne.details().moves[1].type.toUpperCase();
+	POMoveTwo.querySelector(
+		".power"
+	)!.innerHTML = pokemonOne.details().moves[1].power!.toString();
+	POMoveTwo.querySelector(
+		".accuracy"
+	)!.innerHTML = pokemonOne.details().moves[1].accuracy + '%';
 	POMoveTwo.querySelector(
 		".PP .current-PP"
 	)!.innerHTML = pokemonOne.details().battleStats.moves[1].PP.toString();
@@ -213,6 +225,12 @@ class ProgressBar {
 		".type"
 	)!.innerHTML = pokemonOne.details().moves[2].type.toUpperCase();
 	POMoveThree.querySelector(
+		".power"
+	)!.innerHTML = pokemonOne.details().moves[2].power!.toString();
+	POMoveThree.querySelector(
+		".accuracy"
+	)!.innerHTML = pokemonOne.details().moves[2].accuracy + '%';
+	POMoveThree.querySelector(
 		".PP .current-PP"
 	)!.innerHTML = pokemonOne.details().battleStats.moves[2].PP.toString();
 	POMoveThree.querySelector(
@@ -238,6 +256,12 @@ class ProgressBar {
 	POMoveFour.querySelector(
 		".type"
 	)!.innerHTML = pokemonOne.details().moves[3].type.toUpperCase();
+	POMoveFour.querySelector(
+		".power"
+	)!.innerHTML = pokemonOne.details().moves[3].power!.toString();
+	POMoveFour.querySelector(
+		".accuracy"
+	)!.innerHTML = pokemonOne.details().moves[3].accuracy + '%';
 	POMoveFour.querySelector(
 		".PP .current-PP"
 	)!.innerHTML = pokemonOne.details().battleStats.moves[3].PP.toString();
@@ -325,6 +349,12 @@ class ProgressBar {
 		".type"
 	)!.innerHTML = pokemonTwo.details().moves[0].type.toUpperCase();
 	PTMoveOne.querySelector(
+		".power"
+	)!.innerHTML = pokemonTwo.details().moves[0].power!.toString();
+	PTMoveOne.querySelector(
+		".accuracy"
+	)!.innerHTML = pokemonTwo.details().moves[0].accuracy + '%';
+	PTMoveOne.querySelector(
 		".PP .current-PP"
 	)!.innerHTML = pokemonTwo.details().battleStats.moves[0].PP.toString();
 	PTMoveOne.querySelector(
@@ -338,7 +368,7 @@ class ProgressBar {
 			".PP .current-PP"
 		)!.innerHTML = pokemonTwo.details().battleStats.moves[0].PP.toString();
 		document.querySelector(
-			".pokemon-two-hp .current-hp"
+			".pokemon-one-hp .current-hp"
 		)!.innerHTML = pokemonOne.details().battleStats.stats.hp.toString();
 		POHPProgressbar.update(pokemonOne.details().battleStats.stats.hp);
 	});
@@ -350,6 +380,12 @@ class ProgressBar {
 	PTMoveTwo.querySelector(
 		".type"
 	)!.innerHTML = pokemonTwo.details().moves[1].type.toUpperCase();
+	PTMoveTwo.querySelector(
+		".power"
+	)!.innerHTML = pokemonTwo.details().moves[1].power!.toString();
+	PTMoveTwo.querySelector(
+		".accuracy"
+	)!.innerHTML = pokemonTwo.details().moves[1].accuracy + '%';
 	PTMoveTwo.querySelector(
 		".PP .current-PP"
 	)!.innerHTML = pokemonTwo.details().battleStats.moves[1].PP.toString();
@@ -364,7 +400,7 @@ class ProgressBar {
 			".PP .current-PP"
 		)!.innerHTML = pokemonTwo.details().battleStats.moves[1].PP.toString();
 		document.querySelector(
-			".pokemon-two-hp .current-hp"
+			".pokemon-one-hp .current-hp"
 		)!.innerHTML = pokemonOne.details().battleStats.stats.hp.toString();
 		POHPProgressbar.update(pokemonOne.details().battleStats.stats.hp);
 	});
@@ -376,6 +412,12 @@ class ProgressBar {
 	PTMoveThree.querySelector(
 		".type"
 	)!.innerHTML = pokemonTwo.details().moves[2].type.toUpperCase();
+	PTMoveThree.querySelector(
+		".power"
+	)!.innerHTML = pokemonTwo.details().moves[2].power!.toString();
+	PTMoveThree.querySelector(
+		".accuracy"
+	)!.innerHTML = pokemonTwo.details().moves[2].accuracy + '%';
 	PTMoveThree.querySelector(
 		".PP .current-PP"
 	)!.innerHTML = pokemonTwo.details().battleStats.moves[2].PP.toString();
@@ -390,7 +432,7 @@ class ProgressBar {
 			".PP .current-PP"
 		)!.innerHTML = pokemonTwo.details().battleStats.moves[2].PP.toString();
 		document.querySelector(
-			".pokemon-two-hp .current-hp"
+			".pokemon-one-hp .current-hp"
 		)!.innerHTML = pokemonOne.details().battleStats.stats.hp.toString();
 		POHPProgressbar.update(pokemonOne.details().battleStats.stats.hp);
 	});
@@ -402,6 +444,12 @@ class ProgressBar {
 	PTMoveFour.querySelector(
 		".type"
 	)!.innerHTML = pokemonTwo.details().moves[3].type.toUpperCase();
+	PTMoveFour.querySelector(
+		".power"
+	)!.innerHTML = pokemonTwo.details().moves[3].power!.toString();
+	PTMoveFour.querySelector(
+		".accuracy"
+	)!.innerHTML = pokemonTwo.details().moves[3].accuracy + '%';
 	PTMoveFour.querySelector(
 		".PP .current-PP"
 	)!.innerHTML = pokemonTwo.details().battleStats.moves[3].PP.toString();
@@ -416,7 +464,7 @@ class ProgressBar {
 			".PP .current-PP"
 		)!.innerHTML = pokemonTwo.details().battleStats.moves[3].PP.toString();
 		document.querySelector(
-			".pokemon-two-hp .current-hp"
+			".pokemon-one-hp .current-hp"
 		)!.innerHTML = pokemonOne.details().battleStats.stats.hp.toString();
 		POHPProgressbar.update(pokemonOne.details().battleStats.stats.hp);
 	});

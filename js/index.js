@@ -91,6 +91,8 @@ class ProgressBar {
     const POMoveOne = document.querySelector(".pokemon-one-move-one");
     POMoveOne.querySelector(".name").innerHTML = pokemonOne.details().moves[0].name.toUpperCase();
     POMoveOne.querySelector(".type").innerHTML = pokemonOne.details().moves[0].type.toUpperCase();
+    POMoveOne.querySelector(".power").innerHTML = pokemonOne.details().moves[0].power.toString();
+    POMoveOne.querySelector(".accuracy").innerHTML = pokemonOne.details().moves[0].accuracy + '%';
     POMoveOne.querySelector(".PP .current-PP").innerHTML = pokemonOne.details().battleStats.moves[0].PP.toString();
     POMoveOne.querySelector(".PP .total-PP").innerHTML = pokemonOne.details().moves[0].PP.toString();
     (_a = POMoveOne.querySelector(".use")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", (e) => {
@@ -103,6 +105,8 @@ class ProgressBar {
     const POMoveTwo = document.querySelector(".pokemon-one-move-two");
     POMoveTwo.querySelector(".name").innerHTML = pokemonOne.details().moves[1].name.toUpperCase();
     POMoveTwo.querySelector(".type").innerHTML = pokemonOne.details().moves[1].type.toUpperCase();
+    POMoveTwo.querySelector(".power").innerHTML = pokemonOne.details().moves[1].power.toString();
+    POMoveTwo.querySelector(".accuracy").innerHTML = pokemonOne.details().moves[1].accuracy + '%';
     POMoveTwo.querySelector(".PP .current-PP").innerHTML = pokemonOne.details().battleStats.moves[1].PP.toString();
     POMoveTwo.querySelector(".PP .total-PP").innerHTML = pokemonOne.details().moves[1].PP.toString();
     (_b = POMoveTwo.querySelector(".use")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", (e) => {
@@ -115,6 +119,8 @@ class ProgressBar {
     const POMoveThree = document.querySelector(".pokemon-one-move-three");
     POMoveThree.querySelector(".name").innerHTML = pokemonOne.details().moves[2].name.toUpperCase();
     POMoveThree.querySelector(".type").innerHTML = pokemonOne.details().moves[2].type.toUpperCase();
+    POMoveThree.querySelector(".power").innerHTML = pokemonOne.details().moves[2].power.toString();
+    POMoveThree.querySelector(".accuracy").innerHTML = pokemonOne.details().moves[2].accuracy + '%';
     POMoveThree.querySelector(".PP .current-PP").innerHTML = pokemonOne.details().battleStats.moves[2].PP.toString();
     POMoveThree.querySelector(".PP .total-PP").innerHTML = pokemonOne.details().moves[2].PP.toString();
     (_c = POMoveThree.querySelector(".use")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", (e) => {
@@ -127,6 +133,8 @@ class ProgressBar {
     const POMoveFour = document.querySelector(".pokemon-one-move-four");
     POMoveFour.querySelector(".name").innerHTML = pokemonOne.details().moves[3].name.toUpperCase();
     POMoveFour.querySelector(".type").innerHTML = pokemonOne.details().moves[3].type.toUpperCase();
+    POMoveFour.querySelector(".power").innerHTML = pokemonOne.details().moves[3].power.toString();
+    POMoveFour.querySelector(".accuracy").innerHTML = pokemonOne.details().moves[3].accuracy + '%';
     POMoveFour.querySelector(".PP .current-PP").innerHTML = pokemonOne.details().battleStats.moves[3].PP.toString();
     POMoveFour.querySelector(".PP .total-PP").innerHTML = pokemonOne.details().moves[3].PP.toString();
     (_d = POMoveFour.querySelector(".use")) === null || _d === void 0 ? void 0 : _d.addEventListener("click", (e) => {
@@ -141,8 +149,6 @@ class ProgressBar {
     var _a, _b, _c, _d;
     const POHPProgress = document.querySelector(".pokemon-one-hp-progress .progress-bar");
     const POHPProgressbar = new ProgressBar(POHPProgress, garchomp.details().stats.hp);
-    const PTHPProgress = document.querySelector(".pokemon-two-hp-progress .progress-bar");
-    const PTHPProgressbar = new ProgressBar(PTHPProgress, reshiram.details().stats.hp);
     // Pokemon Two
     document.querySelector(".pokemon-two-name").innerHTML = pokemonTwo.details().name.toUpperCase();
     const PTTypes = pokemonTwo.details().types;
@@ -164,49 +170,57 @@ class ProgressBar {
     const PTMoveOne = document.querySelector(".pokemon-two-move-one");
     PTMoveOne.querySelector(".name").innerHTML = pokemonTwo.details().moves[0].name.toUpperCase();
     PTMoveOne.querySelector(".type").innerHTML = pokemonTwo.details().moves[0].type.toUpperCase();
+    PTMoveOne.querySelector(".power").innerHTML = pokemonTwo.details().moves[0].power.toString();
+    PTMoveOne.querySelector(".accuracy").innerHTML = pokemonTwo.details().moves[0].accuracy + '%';
     PTMoveOne.querySelector(".PP .current-PP").innerHTML = pokemonTwo.details().battleStats.moves[0].PP.toString();
     PTMoveOne.querySelector(".PP .total-PP").innerHTML = pokemonTwo.details().moves[0].PP.toString();
     (_a = PTMoveOne.querySelector(".use")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", (e) => {
         e.preventDefault();
         pokemonTwo.use(pokemonTwo.details().moves[0].name, pokemonOne);
         PTMoveOne.querySelector(".PP .current-PP").innerHTML = pokemonTwo.details().battleStats.moves[0].PP.toString();
-        document.querySelector(".pokemon-two-hp .current-hp").innerHTML = pokemonOne.details().battleStats.stats.hp.toString();
+        document.querySelector(".pokemon-one-hp .current-hp").innerHTML = pokemonOne.details().battleStats.stats.hp.toString();
         POHPProgressbar.update(pokemonOne.details().battleStats.stats.hp);
     });
     const PTMoveTwo = document.querySelector(".pokemon-two-move-two");
     PTMoveTwo.querySelector(".name").innerHTML = pokemonTwo.details().moves[1].name.toUpperCase();
     PTMoveTwo.querySelector(".type").innerHTML = pokemonTwo.details().moves[1].type.toUpperCase();
+    PTMoveTwo.querySelector(".power").innerHTML = pokemonTwo.details().moves[1].power.toString();
+    PTMoveTwo.querySelector(".accuracy").innerHTML = pokemonTwo.details().moves[1].accuracy + '%';
     PTMoveTwo.querySelector(".PP .current-PP").innerHTML = pokemonTwo.details().battleStats.moves[1].PP.toString();
     PTMoveTwo.querySelector(".PP .total-PP").innerHTML = pokemonTwo.details().moves[1].PP.toString();
     (_b = PTMoveTwo.querySelector(".use")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", (e) => {
         e.preventDefault();
         pokemonTwo.use(pokemonTwo.details().moves[1].name, pokemonOne);
         PTMoveTwo.querySelector(".PP .current-PP").innerHTML = pokemonTwo.details().battleStats.moves[1].PP.toString();
-        document.querySelector(".pokemon-two-hp .current-hp").innerHTML = pokemonOne.details().battleStats.stats.hp.toString();
+        document.querySelector(".pokemon-one-hp .current-hp").innerHTML = pokemonOne.details().battleStats.stats.hp.toString();
         POHPProgressbar.update(pokemonOne.details().battleStats.stats.hp);
     });
     const PTMoveThree = document.querySelector(".pokemon-two-move-three");
     PTMoveThree.querySelector(".name").innerHTML = pokemonTwo.details().moves[2].name.toUpperCase();
     PTMoveThree.querySelector(".type").innerHTML = pokemonTwo.details().moves[2].type.toUpperCase();
+    PTMoveThree.querySelector(".power").innerHTML = pokemonTwo.details().moves[2].power.toString();
+    PTMoveThree.querySelector(".accuracy").innerHTML = pokemonTwo.details().moves[2].accuracy + '%';
     PTMoveThree.querySelector(".PP .current-PP").innerHTML = pokemonTwo.details().battleStats.moves[2].PP.toString();
     PTMoveThree.querySelector(".PP .total-PP").innerHTML = pokemonTwo.details().moves[2].PP.toString();
     (_c = PTMoveThree.querySelector(".use")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", (e) => {
         e.preventDefault();
         pokemonTwo.use(pokemonTwo.details().moves[2].name, pokemonOne);
         PTMoveThree.querySelector(".PP .current-PP").innerHTML = pokemonTwo.details().battleStats.moves[2].PP.toString();
-        document.querySelector(".pokemon-two-hp .current-hp").innerHTML = pokemonOne.details().battleStats.stats.hp.toString();
+        document.querySelector(".pokemon-one-hp .current-hp").innerHTML = pokemonOne.details().battleStats.stats.hp.toString();
         POHPProgressbar.update(pokemonOne.details().battleStats.stats.hp);
     });
     const PTMoveFour = document.querySelector(".pokemon-two-move-four");
     PTMoveFour.querySelector(".name").innerHTML = pokemonTwo.details().moves[3].name.toUpperCase();
     PTMoveFour.querySelector(".type").innerHTML = pokemonTwo.details().moves[3].type.toUpperCase();
+    PTMoveFour.querySelector(".power").innerHTML = pokemonTwo.details().moves[3].power.toString();
+    PTMoveFour.querySelector(".accuracy").innerHTML = pokemonTwo.details().moves[3].accuracy + '%';
     PTMoveFour.querySelector(".PP .current-PP").innerHTML = pokemonTwo.details().battleStats.moves[3].PP.toString();
     PTMoveFour.querySelector(".PP .total-PP").innerHTML = pokemonTwo.details().moves[3].PP.toString();
     (_d = PTMoveFour.querySelector(".use")) === null || _d === void 0 ? void 0 : _d.addEventListener("click", (e) => {
         e.preventDefault();
         pokemonTwo.use(pokemonTwo.details().moves[3].name, pokemonOne);
         PTMoveFour.querySelector(".PP .current-PP").innerHTML = pokemonTwo.details().battleStats.moves[3].PP.toString();
-        document.querySelector(".pokemon-two-hp .current-hp").innerHTML = pokemonOne.details().battleStats.stats.hp.toString();
+        document.querySelector(".pokemon-one-hp .current-hp").innerHTML = pokemonOne.details().battleStats.stats.hp.toString();
         POHPProgressbar.update(pokemonOne.details().battleStats.stats.hp);
     });
 })(garchomp, reshiram);
