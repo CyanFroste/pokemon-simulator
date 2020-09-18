@@ -267,14 +267,6 @@ class ProgressBar {
 		garchomp.details().stats.hp
 	);
 
-	const PTHPProgress = document.querySelector(
-		".pokemon-two-hp-progress .progress-bar"
-	);
-	const PTHPProgressbar = new ProgressBar(
-		PTHPProgress as HTMLElement,
-		reshiram.details().stats.hp
-	);
-
 	// Pokemon Two
 	document.querySelector(
 		".pokemon-two-name"
