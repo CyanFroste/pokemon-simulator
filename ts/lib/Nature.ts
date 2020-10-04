@@ -13,9 +13,6 @@ export class Nature {
 		else if (stat === this.decStat) return 0.9;
 		else return 1;
 	}
-	getName() {
-		return this.name;
-	}
 }
 
 export const NATURES = {

@@ -1,8 +1,11 @@
 import { STAT } from "./Globals.js";
 export class Pokemon {
+    // private status: object[] = [];
     constructor(
     // private gender: string,
-    name, types, nature, moves, baseStats, IVs, EVs // private ability: object
+    name, types, nature, moves, baseStats, IVs, // IV values range from 0 - 31
+    EVs // total EV value of a pokemon can only be 510, one stat can have only 252 EV
+    // private ability: object
     ) {
         this.name = name;
         this.types = types;
@@ -20,15 +23,16 @@ export class Pokemon {
             spDef: 0,
             speed: 0,
         };
-        this.status = [];
         this.battleStats = {
             // Ingeniously shit method to deep copy object
             fainted: false,
             stats: JSON.parse(JSON.stringify(this.stats)),
             moves: JSON.parse(JSON.stringify(this.moves)),
         };
+        // level up the pokemon one time when the pokemon object is created
         this.levelUp(1);
     }
+    // method to set battle related stats
     setBattleStats(stats, moves, fainted) {
         if (stats)
             this.battleStats.stats = stats;
@@ -37,6 +41,7 @@ export class Pokemon {
         if (moves)
             this.battleStats.moves = moves;
     }
+    // shows the details of the pokemon
     details() {
         return {
             name: this.name,
@@ -51,13 +56,18 @@ export class Pokemon {
             EVs: this.EVs,
         };
     }
+    // method to use a move
     use(move, target) {
+        // check if the pokemon has that move in its movelist
         let chosenMove = this.moves.find((_move) => _move.name === move);
         // if the pokemon don't have that move
         if (!chosenMove)
             return;
+        // else call the effect method of the chosen move
         chosenMove.effect(this, target);
     }
+    // method to level up a pokemon
+    // stat changes depend on Pokemon's level, base stats, EVs and IVs
     levelUp(n) {
         this.level += n;
         // begin calculation of stats

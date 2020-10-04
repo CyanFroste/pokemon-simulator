@@ -9,6 +9,7 @@ export class Move {
         this.accuracy = accuracy;
         this.PP = PP;
     }
+    // method to calculate Same type attack bonus - STAB
     STAB(source) {
         for (const type of source.details().types) {
             if (type.name === this.type)
@@ -16,6 +17,7 @@ export class Move {
         }
         return 1;
     }
+    // method to calculate effectiveness of this move against the target pokemon
     typeModifier(target) {
         let modifiers = 1;
         for (const type of target.details().types) {
@@ -23,33 +25,40 @@ export class Move {
         }
         return modifiers;
     }
+    // method to check if a move hits or not
     accuracyCheck() {
         let random = Math.floor(Math.random() * 100 + 1);
         if (random <= this.accuracy)
             return true;
         return false;
     }
+    // the effect of the move
     effect(source, target) {
         let targets = 1, weather = 1, critical = 1, random = parseFloat(((Math.random() * (100 - 85 + 1) + 85) / 100).toFixed(2)), STAB = this.STAB(source), type = this.typeModifier(target), burn = 1, other = 1;
+        // calculate dmg modifier
         let damageModifier = targets * weather * critical * random * STAB * type * burn * other;
+        // check which attack stat to use based on move's category
+        // attack and defense, if the move's category is physical, special attack and special defense, if the category is special
         let A = source.details().stats.attack;
         let D = target.details().stats.defense;
         if (this.category === "special") {
             A = source.details().stats.spAtk;
             D = target.details().stats.spDef;
         }
+        // calculate actual damage
         let damage = this.accuracyCheck()
             ? Math.floor(((((2 * source.details().level) / 5 + 2) * this.power * (A / D)) /
                 50 +
                 2) *
                 damageModifier)
             : 0;
-        console.log(damageModifier, damage);
+        // console.log(damageModifier, damage);
+        // reduce the HP from the battle stats of the target pokemon
         let _stats = target.details().battleStats.stats;
         if (_stats.hp < damage)
             damage = _stats.hp;
         _stats.hp -= damage;
-        // reduce PP after using the move
+        // reduce PP after using the move from the source pokemon
         let _moves = source.details().battleStats.moves;
         _moves.forEach((move) => {
             if (move.name === this.name)

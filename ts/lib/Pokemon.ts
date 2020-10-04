@@ -3,6 +3,7 @@ import { STAT, TYPE } from "./Globals.js";
 import { Type, TYPES } from "./Type.js";
 import { Move } from "./Move.js";
 
+// stats = base stats, EVs, IVs etc. should have this interface
 interface Stats {
 	hp: number;
 	attack: number;
@@ -12,10 +13,12 @@ interface Stats {
 	speed: number;
 }
 
+// a battle related stats interface
 interface BattleStats {
 	fainted: boolean;
 	stats: Stats;
 	moves: Move[];
+	// add more battle related stats
 }
 
 export class Pokemon {
@@ -29,7 +32,7 @@ export class Pokemon {
 		speed: 0,
 	};
 	private battleStats: BattleStats;
-	private status: object[] = [];
+	// private status: object[] = [];
 
 	constructor(
 		// private gender: string,
@@ -38,8 +41,9 @@ export class Pokemon {
 		private nature: Nature,
 		private moves: Move[],
 		private baseStats: Stats,
-		private IVs: Stats,
-		private EVs: Stats // private ability: object
+		private IVs: Stats, // IV values range from 0 - 31
+		private EVs: Stats // total EV value of a pokemon can only be 510, one stat can have only 252 EV
+		// private ability: object
 	) {
 		this.battleStats = {
 			// Ingeniously shit method to deep copy object
@@ -47,15 +51,18 @@ export class Pokemon {
 			stats: JSON.parse(JSON.stringify(this.stats)),
 			moves: JSON.parse(JSON.stringify(this.moves)),
 		};
+		// level up the pokemon one time when the pokemon object is created
 		this.levelUp(1);
 	}
 
+	// method to set battle related stats
 	setBattleStats(stats?: Stats, moves?: Move[], fainted?: boolean) {
 		if (stats) this.battleStats.stats = stats;
 		if (fainted) this.battleStats.fainted = fainted;
 		if (moves) this.battleStats.moves = moves;
 	}
 
+	// shows the details of the pokemon
 	details() {
 		return {
 			name: this.name,
@@ -71,13 +78,18 @@ export class Pokemon {
 		};
 	}
 
+	// method to use a move
 	use(move: string, target: Pokemon) {
+		// check if the pokemon has that move in its movelist
 		let chosenMove = this.moves.find((_move) => _move.name === move);
 		// if the pokemon don't have that move
 		if (!chosenMove) return;
+		// else call the effect method of the chosen move
 		chosenMove.effect(this, target);
 	}
 
+	// method to level up a pokemon
+	// stat changes depend on Pokemon's level, base stats, EVs and IVs
 	levelUp(n: number) {
 		this.level += n;
 		// begin calculation of stats

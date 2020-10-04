@@ -16,9 +16,6 @@ export class Nature {
         else
             return 1;
     }
-    getName() {
-        return this.name;
-    }
 }
 export const NATURES = {
     hardy: new Nature("hardy", null, null),
